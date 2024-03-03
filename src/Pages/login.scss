@@ -1,0 +1,23 @@
+.loginlayout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-content: center;
+  gap: 3.2rem;
+  background-color: var(--color-grey-50);
+}
+
+.btnlogout {
+  background: none;
+  border: none;
+  padding: 0.6rem;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s;
+
+  & svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--color-brand-600);
+  }
+}

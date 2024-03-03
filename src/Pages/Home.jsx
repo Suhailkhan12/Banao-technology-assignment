@@ -1,23 +1,16 @@
-import Hero from "../features/Hero/Hero";
-import "./Home.scss";
-import About from "../features/About/About";
-import Project from "../features/Project/Project";
-import WhatIdo from "../features/WhatIdo/WhatIdo";
-import Footer from "../features/Footer/Footer";
-import Gmail from "../features/Gmail/Gmail";
-import Getintouch from "../features/Getintouch/Getintouch";
+import Hero from "../features/HeroSection/Hero";
+import Leftaside from "../features/Leftaside/Leftaside";
+import Rightaside from "../features/Rightaside/Rightaside";
+import Filter from "../features/filter/Filter";
 
 function Home({ resumeData }) {
   return (
-    <main className="container">
-      <Hero intro={resumeData.intro} />
-      <About about={resumeData.about} />
-      <WhatIdo whatdata={resumeData.whatidoref} />
-      <Project projectdata={resumeData.projectdata} />
-      <Getintouch />
-      <Footer footerdata={resumeData.footercontent} />
-      <Gmail />
-    </main>
+    <>
+      <Hero />
+      <Filter />
+      <Leftaside />
+      <Rightaside />
+    </>
   );
 }
 

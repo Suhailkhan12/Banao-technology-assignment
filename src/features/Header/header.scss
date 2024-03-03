@@ -1,208 +1,141 @@
 @import "../../sass/mixins.scss";
 
-.navigation {
-  position: relative;
-  z-index: 999;
+.header {
+  height: 6rem;
+  background-color: #fff;
+  border-bottom: var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
 
-  min-height: 9rem;
-  padding: 0 4rem;
-  backdrop-filter: blur(10px);
-  border-bottom: 0.1px solid rgba(0, 0, 0, 0.02);
+  @include respond(phone) {
+    flex-wrap: wrap;
+    height: 12rem;
+    align-content: space-around;
+  }
+}
+
+//////////////////////////////
+///Logo
+.logo {
+  height: 2rem;
+  margin-left: 2rem;
+}
+
+//////////////////////////////
+///Search
+.search {
+  flex: 0 0 40%;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  position: relative;
+  @include respond(phone) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-300);
+  }
 
-  &__logo {
-    height: 5rem;
-    color: var(--color-secondary);
-    &--img {
-      height: 100%;
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: var(--color-grey-300);
+    border: none;
+    border-radius: 10rem;
+    padding: 0.7rem 2rem;
+    width: 90%;
+    transition: all 0.2s;
+    margin-right: -3.5rem;
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: var(--color-grey-light-3);
+    }
+
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: var(--color-grey-light-4);
     }
   }
 
-  &__button,
-  &__icon,
-  &__backgroung {
-    display: none;
-
-    @include respond(tab-land) {
-      display: block;
-    }
+  &__input:focus + &__button {
+    background-color: var(--color-grey-light-3);
   }
 
   &__button {
-    @include respond(tab-land) {
-      // background-color: var(--color-white);
-      // height: 7rem;
-      // width: 7rem;
-      position: absolute;
-      top: 50%;
-      right: 3rem;
+    background-color: var(--color-grey-300);
+    border: none;
 
-      z-index: 2000;
-      box-shadow: 0 1rem 3rem rgba(var(--color-black), 0.15);
-      text-align: center;
-      cursor: pointer;
+    &:focus {
+      outline: none;
     }
 
-    @include respond(phone) {
-      position: absolute;
-      top: 50%;
-      right: 3rem;
+    &:active {
+      transform: translateY(2px);
     }
   }
 
   &__icon {
-    @include respond(tab-land) {
-      position: relative;
-
-      &,
-      &::before,
-      &::after {
-        width: 30px;
-        height: 2px;
-        background-color: var(--color-grey-dark-2);
-        display: inline-block;
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        left: 0;
-
-        position: absolute;
-        transition: all 0.5s;
-      }
-
-      &::before {
-        top: -1.2rem;
-      }
-
-      &::after {
-        top: 1.2rem;
-      }
-
-      &-open {
-        background-color: transparent;
-        &::before {
-          top: 0;
-          transform: rotate(135deg);
-        }
-
-        &::after {
-          top: 0;
-          transform: rotate(-135deg);
-        }
-      }
-    }
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-grey-dark-3);
   }
+}
 
-  &__background {
-    @include respond(tab-land) {
-      height: 6rem;
-      width: 6rem;
-      border-radius: 50%;
-      position: fixed;
-      top: 3.5rem;
-      right: 3.5rem;
-      background-image: radial-gradient(
-        var(--color-primary),
-        var(--color-primary-light)
-      );
-      z-index: 1000;
+//////////////////////////////
+///User Nav
+.user-nav {
+  align-self: stretch;
 
-      transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  display: flex;
+  align-items: center;
 
-      &-open {
-        transform: scale(80);
-      }
+  // direct Children
+  & > * {
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
 
-      // transform: scale(80);
-    }
-
-    @include respond(phone) {
-      top: 2.5rem;
-      right: 2.5rem;
-    }
-  }
-
-  &__nav {
-    @include respond(tab-land) {
-      height: 95vh;
-
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1500;
-
-      opacity: 0;
-      width: 0;
-      visibility: hidden;
-
-      transition: all 0.8s cubic-bezier(0, 1.04, 0.49, 1.01);
-
-      &-open {
-        opacity: 1;
-        width: 100%;
-        visibility: visible;
-      }
-    }
-  }
-
-  &__list {
     display: flex;
     align-items: center;
-    list-style: none;
-
-    @include respond(tab-land) {
-      flex-direction: column;
-      text-align: center;
-      justify-content: center;
-      width: inherit;
-      height: inherit;
-    }
   }
 
-  &__item {
-    &:not(:last-child) {
-      margin-right: 2rem;
-    }
-    @include respond(tab-land) {
-      margin: 1rem;
-    }
+  & > *:hover {
+    background-color: var(--color-grey-300);
   }
 
-  &__link {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 400;
-    padding: 1rem 1.2rem;
-    color: var(--color-white);
-    text-decoration: none;
-    text-transform: uppercase;
-    background-image: linear-gradient(
-      120deg,
-      transparent 0%,
-      transparent 50%,
-      #fff 50%
-    );
-    background-size: 250%;
-    transition: all 0.6s;
-    cursor: pointer;
+  &__icon-box {
+    position: relative;
+  }
 
-    @include respond(tab-land) {
-      display: inline-block;
-      font-size: 3rem;
-      color: var(--color-white-1);
-    }
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: var(--color-grey-dark-2);
+  }
 
-    &:hover,
-    &:active {
-      background-position: 100%;
-      color: var(--color-primary);
-    }
+  &__notification {
+    font-size: 0.8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.1rem;
+  }
+
+  &__user-photo {
+    height: 3.75rem;
+    border-radius: 50%;
+    margin-right: 1rem;
   }
 }

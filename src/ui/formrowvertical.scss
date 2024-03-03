@@ -1,0 +1,14 @@
+.styledformverticalrow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.verticallabel {
+  font-weight: 500;
+}
+
+error {
+  font-size: 1.4rem;
+  color: var(--color-red-700);
+}
