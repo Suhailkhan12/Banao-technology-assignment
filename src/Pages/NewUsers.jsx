@@ -1,9 +1,9 @@
 import SignupForm from "../features/authentication/SignupForm";
-import "./newusers.scss";
+import "./login.scss";
 
 function NewUsers() {
   return (
-    <main className="newuserlayout">
+    <main className="loginlayout">
       <SignupForm />
     </main>
   );
