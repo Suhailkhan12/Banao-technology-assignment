@@ -28,7 +28,7 @@ function Filter() {
           </span>
           join group
         </button>
-        <select className="button social-button-facebook">
+        <select className="button no-margin social-button-facebook">
           <option>Filter:All</option>
         </select>
       </div>

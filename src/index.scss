@@ -79,7 +79,7 @@ html {
   }
 
   @include respond(phone) {
-    font-size: 45%;
+    font-size: 57%;
   }
 }
 
@@ -200,6 +200,10 @@ a {
 
 .mb-hg {
   margin-bottom: 8rem !important;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 
 a {
