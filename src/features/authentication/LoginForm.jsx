@@ -6,7 +6,7 @@ import { useLogin } from "./useLogin";
 import "./loginform.scss";
 import ImageLogin from "../../assets/Group3.svg";
 import OtherLoginButton from "./OtherLoginButton";
-import { Link } from "react-router-dom";
+import NewUsers from "../../Pages/NewUsers";
 
 function LoginForm() {
   const [email, setEmail] = useState("test@gmail.com");
@@ -32,13 +32,14 @@ function LoginForm() {
     <>
       <div className="loginlayoutone">
         <div className="loginlayoutone__display1">
-          <span>
+          <span className="new">
             Let's learn, share & inspire each other with our passion for
-            computer engineering. <Link to="/signup">Sign up now 🤘🏼</Link>
+            computer engineering.&nbsp;
+            <NewUsers name="Sign up now 🤘🏼" />
           </span>
         </div>
         <div className="loginlayoutone__display2">
-          <h3 className="heading-3 mb-sm">Sign In</h3>
+          <h3 className="heading-4 mb-sm">Sign In</h3>
           <form onSubmit={handleSubmit}>
             <FormRowVertical>
               <input
@@ -73,9 +74,9 @@ function LoginForm() {
           <OtherLoginButton />
         </div>
         <div className="loginlayoutone__display3">
-          <div>
-            Don’t have an account yet? &nbsp;
-            <Link to="/signup">Create new for free!</Link>
+          <div className="new">
+            Don’t have an account yet? &nbsp;{" "}
+            <NewUsers name="Create new for free!" />
           </div>
           <img src={ImageLogin} alt="" className="do__fig--photo" />
         </div>

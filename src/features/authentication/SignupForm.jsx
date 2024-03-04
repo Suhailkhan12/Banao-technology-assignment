@@ -7,6 +7,7 @@ import "./loginform.scss";
 import ImageLogin from "../../assets/Group3.svg";
 import OtherLoginButton from "./OtherLoginButton";
 import { Link } from "react-router-dom";
+import Login from "../../Pages/Login";
 
 // Email regex: /\S+@\S+\.\S+/
 
@@ -34,12 +35,12 @@ function SignupForm() {
     <>
       <div className="loginlayoutone">
         <div className="loginlayoutone__display1">
-          <span>
-            Have a Account <Link to="/login">Log In Here 🤘🏼</Link>
+          <span className="new">
+            Have a Account&nbsp; <Login name="Log In Here 🤘🏼" />
           </span>
         </div>
         <div className="loginlayoutone__display2">
-          <h3 className="heading-3 mb-sm">Create Account</h3>
+          <h3 className="heading-4 mb-sm">Create Account</h3>
           <form onSubmit={handleSubmit(onSubmit, onError)}>
             <FormRowVertical error={errors?.fullName?.message}>
               <input

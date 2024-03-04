@@ -4,10 +4,11 @@ import "./header.scss";
 import UserAvatar from "../authentication/UserAvatar";
 import Logout from "../authentication/Logout";
 import { useUser } from "../authentication/useUser";
-import { Link } from "react-router-dom";
+
+import NewUsers from "../../Pages/NewUsers";
 
 function Header() {
-  const { isLoading, isAuthenticated } = useUser();
+  const { isAuthenticated } = useUser();
 
   return (
     <header className="header">
@@ -28,7 +29,8 @@ function Header() {
         <div className="user-nav__user">
           {!isAuthenticated ? (
             <>
-              Create a account &nbsp;<Link to="/login">It's free</Link>
+              Create a account &nbsp;
+              <NewUsers name="It's free" />
             </>
           ) : (
             <>
