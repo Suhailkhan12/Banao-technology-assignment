@@ -4,16 +4,18 @@ import { useUser } from "./useUser";
 function UserAvatar() {
   const { user } = useUser();
 
-  const { fullName, avatar } = user.user_metadata;
+  console.log("useAvatar", user);
+
+  const { fullName, full_name, avatar } = user.user_metadata;
 
   return (
     <div className="containeravatar">
       <img
         className="avatar"
         src={avatar || "default-user.jpg"}
-        alt={`Avatar of ${fullName}`}
+        alt={`Avatar of ${fullName || full_name}`}
       />
-      <span>{fullName}</span>
+      <span>{fullName || full_name}</span>
     </div>
   );
 }
