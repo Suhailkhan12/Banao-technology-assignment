@@ -4,7 +4,7 @@ import Leftsidecard from "./Leftsidecard";
 import "./leftaside.scss";
 
 function Leftaside() {
-  const { isLoading, posts, errors } = usePosts();
+  const { isLoading, posts } = usePosts();
 
   if (isLoading) return <Spinner />;
 
