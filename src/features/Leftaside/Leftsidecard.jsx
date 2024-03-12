@@ -6,7 +6,6 @@ import { useState } from "react";
 import useEditViews from "../CreatePost/useEditViews";
 
 function Leftsidecard({ post }) {
-  console.log("post", post);
   const { id, title, topic, description, image, profiles, views } = post;
   const { avatar, full_name, fullname, avatar_url } = profiles;
 

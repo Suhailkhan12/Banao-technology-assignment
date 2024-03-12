@@ -9,14 +9,13 @@ import useCreatePost from "./useCreatePost";
 
 function CreatePost() {
   const { user } = useUser();
-  console.log("google", user);
 
   const { isCreating, CreatePostNew } = useCreatePost();
   const { register, handleSubmit, reset, formState } = useForm();
 
   if (!user) return null;
 
-  const { id } = user.identities[0];
+  const { id } = user;
 
   const { errors } = formState;
 
