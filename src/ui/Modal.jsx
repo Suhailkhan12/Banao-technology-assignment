@@ -10,11 +10,6 @@ const ModalContext = createContext();
 function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
-  // const close = (d) => {
-  //   d.preventDefault();
-  //   setOpenName("");
-  // };
-
   function close(e) {
     e.preventDefault();
     setOpenName("");

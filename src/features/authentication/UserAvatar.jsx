@@ -4,8 +4,6 @@ import { useUser } from "./useUser";
 function UserAvatar() {
   const { user } = useUser();
 
-  console.log("useAvatar", user);
-
   const { fullName, full_name, avatar } = user.user_metadata;
 
   return (

@@ -1,0 +1,42 @@
+@import "../../sass/mixins.scss";
+
+.createpost {
+  grid-column: center-start/center-end;
+  padding: 5rem;
+  overflow: scroll;
+
+  .styledformrow {
+    grid-template-columns: minmax(3rem, 20rem) 1fr;
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+
+      .label {
+        display: none;
+      }
+    }
+  }
+
+  .input:not(:first-child) {
+    border-top: 1px solid var(--color-grey-300) !important;
+  }
+
+  .input::placeholder {
+    opacity: 0;
+    @include respond(tab-port) {
+      opacity: 0.7;
+    }
+  }
+
+  .textareas::placeholder {
+    opacity: 0;
+
+    @include respond(tab-port) {
+      opacity: 0.7;
+    }
+  }
+
+  .button:last-child {
+    margin-top: 0rem;
+  }
+}

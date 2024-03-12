@@ -1,44 +1,52 @@
 import "./leftaside.scss";
-import Image from "../../assets/post.png";
+// import Image from "../../assets/post.png";
 import Eye from "../../assets/visibility.svg";
 import Share from "../../assets/Vectorthree.svg";
+import { useState } from "react";
+import useEditViews from "../CreatePost/useEditViews";
 
-function Leftsidecard() {
+function Leftsidecard({ post }) {
+  // console.log("post", post);
+  const { id, title, topic, description, image, profiles, views } = post;
+  const { avatar, full_name } = profiles;
+
+  const [view, setView] = useState(views);
+
+  const { ViewInc } = useEditViews();
+
+  function updatingView() {
+    // console.log(id);
+    setView((v) => v + 1);
+    // console.log(view);
+    ViewInc({ id, view });
+  }
+
   return (
     <div className="postcontent">
       <div className="postcontent__image">
-        <img src={Image} alt="none" className="postcontent__image--photo" />
+        <img src={image} alt="none" className="postcontent__image--photo" />
       </div>
 
       <div className="paddingsetup">
-        <div className="postcontent__topic">✍️ Article</div>
+        <div className="postcontent__topic">{topic}</div>
         <div className="postcontent__title">
-          <span className="postcontent__title--t">
-            What if famous brands had regular fonts? Meet RegulaBrands!
-          </span>
+          <span className="postcontent__title--t">{title}</span>
           <span>...</span>
         </div>
         <div className="postcontent__desc">
-          <span>
-            I’ve worked in UX for the better part of a decade. From now on, I
-            plan to rei…
-          </span>
+          <span>{description}</span>
         </div>
         <div className="postcontent__user">
           <div className="postcontent__user--info">
             <div className="postcontent__user--image">
-              <img
-                className="postcontent__user--photo"
-                src="https://i.ibb.co/cNs5QNs/IMG-20170514-WA0003.jpg"
-                alt=""
-              />
+              <img className="postcontent__user--photo" src={avatar} alt="" />
             </div>
-            <div className="postcontent__user--name">Siddarth</div>
+            <div className="postcontent__user--name">{full_name}</div>
           </div>
           <div className="postcontent__user--share">
-            <div className="postcontent__user--views">
+            <div className="postcontent__user--views" onClick={updatingView}>
               <img src={Eye} alt="eye" />
-              <spna>1.4 k views</spna>
+              <spna>{views} views</spna>
             </div>
             <div className="postcontent__user--sharebutton">
               <img src={Share} alt="share" />
