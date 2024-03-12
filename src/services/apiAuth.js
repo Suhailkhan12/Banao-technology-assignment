@@ -80,16 +80,16 @@ export async function updateCurrentUser({ password, fullName, avatar }) {
   return updatedUser;
 }
 
-// export async function loginWithGoogle() {
-//   const { data, error } = await supabase.auth.signInWithOAuth({
-//     provider: "google",
-//     options: {
-//       queryParams: {
-//         access_type: "online",
-//         prompt: "consent",
-//       },
-//     },
-//   });
+export async function loginWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      queryParams: {
+        access_type: "online",
+        prompt: "consent",
+      },
+    },
+  });
 
-//   return data;
-// }
+  return data;
+}
