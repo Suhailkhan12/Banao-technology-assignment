@@ -6,9 +6,9 @@ import { useState } from "react";
 import useEditViews from "../CreatePost/useEditViews";
 
 function Leftsidecard({ post }) {
-  // console.log("post", post);
+  console.log("post", post);
   const { id, title, topic, description, image, profiles, views } = post;
-  const { avatar, full_name } = profiles;
+  const { avatar, full_name, fullname, avatar_url } = profiles;
 
   const [view, setView] = useState(views);
 
@@ -34,14 +34,20 @@ function Leftsidecard({ post }) {
           <span>...</span>
         </div>
         <div className="postcontent__desc">
-          <span>{description}</span>
+          <span>{description.slice(0, 70)}...</span>
         </div>
         <div className="postcontent__user">
           <div className="postcontent__user--info">
             <div className="postcontent__user--image">
-              <img className="postcontent__user--photo" src={avatar} alt="" />
+              <img
+                className="postcontent__user--photo"
+                src={avatar || avatar_url}
+                alt=""
+              />
             </div>
-            <div className="postcontent__user--name">{full_name}</div>
+            <div className="postcontent__user--name">
+              {full_name || fullname}
+            </div>
           </div>
           <div className="postcontent__user--share">
             <div className="postcontent__user--views" onClick={updatingView}>
