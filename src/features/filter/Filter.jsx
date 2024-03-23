@@ -4,7 +4,7 @@ import Groupicon from "../../assets/Vectortwo.svg";
 import "../../ui/button.scss";
 import { useUser } from "../authentication/useUser";
 import { Link } from "react-router-dom";
-import FilterComponent from "./FilterComponent";
+import FilterComponent, { FilterComponentMobile } from "./FilterComponent";
 
 function Filter() {
   const { isAuthenticated } = useUser();
@@ -41,17 +41,16 @@ function Filter() {
           </span>
           join group
         </button>
-        <select className="button no-margin social-button-facebook">
-          <FilterComponent
-            filterField="topic"
-            options={[
-              { value: "all", label: "All Post" },
-              { value: "🗓️ Meetup", label: "Event" },
-              { value: "✍️ Article", label: "Arcticle" },
-              { value: "🔬️ Education", label: "Education" },
-            ]}
-          />
-        </select>
+
+        <FilterComponentMobile
+          filterField="topic"
+          options={[
+            { value: "all", label: "All Post" },
+            { value: "🗓️ Meetup", label: "Event" },
+            { value: "✍️ Article", label: "Arcticle" },
+            { value: "🔬️ Education", label: "Education" },
+          ]}
+        />
       </div>
     </div>
   );

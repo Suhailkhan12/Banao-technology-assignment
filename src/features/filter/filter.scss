@@ -45,5 +45,11 @@
 }
 
 .filtermargin {
-  margin-right: 2rem;
+  &__desktop {
+    margin-right: 2rem;
+
+    @include respond(tab-land) {
+      display: none;
+    }
+  }
 }
