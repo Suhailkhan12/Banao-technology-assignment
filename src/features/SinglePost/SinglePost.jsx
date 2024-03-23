@@ -29,7 +29,7 @@ function SinglePost() {
         <div className="postheader__imagecontainer">
           <img
             src={image}
-            alt={id}
+            alt={id || topicpic}
             className="postheader__imagecontainer--image"
           />
         </div>
