@@ -20,7 +20,7 @@
   cursor: pointer;
 
   @include respond(tab-port) {
-    margin: 1.5rem;
+    margin: 0rem;
   }
 
   &__image {
