@@ -1,0 +1,65 @@
+@import "../../sass/mixins.scss";
+
+.postheader {
+  grid-column: full-start / full-end;
+  position: relative;
+
+  &__imagecontainer {
+    height: 100%;
+    width: 100%;
+    background: black;
+    position: relative;
+    z-index: 9;
+
+    &--image {
+      height: inherit;
+      width: inherit;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.6;
+    }
+  }
+
+  &__content {
+    color: var(--color-grey-0);
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.singlepostcontent {
+  grid-column: center-start / center-end;
+  padding: 5rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+.relatedpost {
+  grid-column: center-start / center-end;
+  @include respond(tab-port) {
+    margin-top: 5rem;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import Home from "./Pages/Home";
 import PageNotFound from "./Pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import CreatePost from "./features/CreatePost/CreatePost";
+import SinglePost from "./features/SinglePost/SinglePost";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route element={<AppLayout />}>
           <Route index element={<Home />} />
           <Route path="/post" element={<CreatePost />} />
+          <Route path="/:postId" element={<SinglePost />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

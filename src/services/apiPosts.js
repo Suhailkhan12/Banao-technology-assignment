@@ -64,6 +64,35 @@ export async function updateView(id, view) {
   return data;
 }
 
+export async function getSinglePost(id) {
+  const { data, error } = await supabase
+    .from("post")
+    .select("*, profiles(*)")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking not found");
+  }
+
+  return data;
+}
+
+export async function getrelatedPost(topic) {
+  const { data, error } = await supabase
+    .from("post")
+    .select("*, profiles(*)")
+    .eq("topic", topic);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking not found");
+  }
+
+  return data;
+}
+
 // export async function deleteCabin(id) {
 //   const { data, error } = await supabase.from("cabin").delete().eq("id", id);
 

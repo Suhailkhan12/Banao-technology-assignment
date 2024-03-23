@@ -4,24 +4,29 @@ import Eye from "../../assets/visibility.svg";
 import Share from "../../assets/Vectorthree.svg";
 import { useState } from "react";
 import useEditViews from "../CreatePost/useEditViews";
+import { useNavigate } from "react-router-dom";
 
 function Leftsidecard({ post }) {
+  const navigate = useNavigate();
   const { id, title, topic, description, image, profiles, views } = post;
   const { avatar, full_name, fullname, avatar_url } = profiles;
 
-  const [view, setView] = useState(views);
+  const [view, setView] = useState(views + 1);
 
   const { ViewInc } = useEditViews();
 
-  function updatingView() {
+  async function updatingViewandNavigate(e) {
+    e.preventDefault();
     // console.log(id);
     setView((v) => v + 1);
     // console.log(view);
     ViewInc({ id, view });
+
+    navigate(`/${id}?topic=${topic}`);
   }
 
   return (
-    <div className="postcontent">
+    <div className="postcontent" onClick={updatingViewandNavigate}>
       <div className="postcontent__image">
         <img src={image} alt="none" className="postcontent__image--photo" />
       </div>
@@ -30,7 +35,6 @@ function Leftsidecard({ post }) {
         <div className="postcontent__topic">{topic}</div>
         <div className="postcontent__title">
           <span className="postcontent__title--t">{title}</span>
-          <span>...</span>
         </div>
         <div className="postcontent__desc">
           <span>{description.slice(0, 70)}...</span>
@@ -49,9 +53,9 @@ function Leftsidecard({ post }) {
             </div>
           </div>
           <div className="postcontent__user--share">
-            <div className="postcontent__user--views" onClick={updatingView}>
+            <div className="postcontent__user--views">
               <img src={Eye} alt="eye" />
-              <spna>{views} views</spna>
+              <span>{views} views</span>
             </div>
             <div className="postcontent__user--sharebutton">
               <img src={Share} alt="share" />

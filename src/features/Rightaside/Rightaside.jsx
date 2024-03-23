@@ -3,6 +3,7 @@ import Info from "../../assets/Vectorfour.svg";
 import Location from "../../assets/Vectorfive.svg";
 import Edit from "../../assets/Vectorsix.svg";
 import EditMobile from "../../assets/edittwo.svg";
+import { Link } from "react-router-dom";
 
 function Rightaside() {
   return (
@@ -27,9 +28,11 @@ function Rightaside() {
           </div>
         </div>
       </div>
-      <div className="mobile__edit">
-        <img src={EditMobile} alt="edit" />
-      </div>
+      <Link to="/post">
+        <div className="mobile__edit">
+          <img src={EditMobile} alt="edit" />
+        </div>
+      </Link>
     </>
   );
 }
