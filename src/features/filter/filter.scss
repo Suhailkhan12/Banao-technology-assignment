@@ -4,7 +4,7 @@
   grid-column: center-start / center-end;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 2rem 0.5rem 1.3rem 0.5rem;
   border-bottom: 1px solid rgba(0, 0, 0);
 
@@ -19,16 +19,8 @@
       align-items: center;
       font-size: 1.5rem;
 
-      li {
-        &:not(:last-child) {
-          margin-right: 2rem;
-        }
-
-        @include respond(tab-port) {
-          &:not(:first-child) {
-            display: none;
-          }
-        }
+      @include respond(tab-port) {
+        display: none;
       }
     }
   }
@@ -50,4 +42,8 @@
       }
     }
   }
+}
+
+.filtermargin {
+  margin-right: 2rem;
 }

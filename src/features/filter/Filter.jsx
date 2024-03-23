@@ -4,6 +4,7 @@ import Groupicon from "../../assets/Vectortwo.svg";
 import "../../ui/button.scss";
 import { useUser } from "../authentication/useUser";
 import { Link } from "react-router-dom";
+import FilterComponent from "./FilterComponent";
 
 function Filter() {
   const { isAuthenticated } = useUser();
@@ -11,13 +12,17 @@ function Filter() {
   return (
     <div className="filter">
       <div className="filter__post">
-        <ul className="filter__post--list">
-          <li>All Post(32)</li>
-          <li>Article</li>
-          <li>Event</li>
-          <li>Education</li>
-          <li>Job</li>
-        </ul>
+        <div className="filter__post--list">
+          <FilterComponent
+            filterField="topic"
+            options={[
+              { value: "all", label: "All Post" },
+              { value: "🗓️ Meetup", label: "Event" },
+              { value: "✍️ Article", label: "Arcticle" },
+              { value: "🔬️ Education", label: "Education" },
+            ]}
+          />
+        </div>
       </div>
       <div className="filter__button">
         <button className="button social-button-facebook">
@@ -37,7 +42,15 @@ function Filter() {
           join group
         </button>
         <select className="button no-margin social-button-facebook">
-          <option>Filter:All</option>
+          <FilterComponent
+            filterField="topic"
+            options={[
+              { value: "all", label: "All Post" },
+              { value: "🗓️ Meetup", label: "Event" },
+              { value: "✍️ Article", label: "Arcticle" },
+              { value: "🔬️ Education", label: "Education" },
+            ]}
+          />
         </select>
       </div>
     </div>

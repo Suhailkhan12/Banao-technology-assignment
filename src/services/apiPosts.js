@@ -32,13 +32,33 @@ export async function createPost(newPost) {
 }
 
 // Post fetch
-export async function getPosts() {
-  let { data: post, error } = await supabase.from("post").select(`
+// export async function getPosts({ filter }) {
+//   let { data: post, error } = await supabase.from("post").select(`
+//   *,
+//   profiles(
+//     *
+//   )
+// `);
+
+//   if (error) {
+//     console.log(error);
+//     throw new Error("post could not loaded");
+//   }
+
+//   return post;
+// }
+
+export async function getPosts({ filter }) {
+  let query = supabase.from("post").select(`
   *,
   profiles(
     *
-  )
-`);
+  )`);
+
+  // FILTER
+  if (filter) query = query[filter.method || "eq"](filter.field, filter.value);
+
+  const { data: post, error } = await query;
 
   if (error) {
     console.log(error);

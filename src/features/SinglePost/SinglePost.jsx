@@ -17,11 +17,11 @@ function SinglePost() {
     relatedPost,
   } = useRelatedPost();
 
-  console.log(relatedPost);
-
   const { id, image, topic, title, description } = singlePost;
 
   if (singlepostLoading || relatedpostLoading) return null;
+
+  const [topicpic, topiccontent] = topic.split(" ");
 
   return (
     <>
@@ -35,7 +35,7 @@ function SinglePost() {
         </div>
         <div className="postheader__content">
           <span className="heading-2">{title}</span>
-          <span className="heading-4">{topic}</span>
+          <span className="heading-4">{topiccontent}</span>
         </div>
       </div>
       <div className="singlepostcontent mb-toplg">

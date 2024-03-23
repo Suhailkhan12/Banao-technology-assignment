@@ -6,20 +6,19 @@ import Logout from "../authentication/Logout";
 import { useUser } from "../authentication/useUser";
 
 import NewUsers from "../../Pages/NewUsers";
+import { Link } from "react-router-dom";
 
 function Header() {
   const { isAuthenticated } = useUser();
 
   return (
     <header className="header">
-      <img src={Logo} alt="trillo logo" className="logo" />
+      <Link to="/" className="header__logo">
+        <img src={Logo} alt="trillo logo" className="logo" />
+      </Link>
 
       <form action="#" className="search">
-        <input
-          type="text"
-          className="search__input"
-          placeholder="Search hotels"
-        />
+        <input type="text" className="search__input" placeholder="Search..." />
         <button className="search__button">
           <FaSearch />
         </button>
