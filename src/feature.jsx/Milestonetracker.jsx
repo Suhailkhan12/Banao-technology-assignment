@@ -2,7 +2,11 @@ import React, { useState } from "react";
 
 const MilestoneTracker = () => {
   const [milestones, setMilestones] = useState([]);
-  const [milestone, setMilestone] = useState({ date: "", description: "" });
+  const [milestone, setMilestone] = useState({
+    id: null,
+    date: "",
+    description: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,14 +18,32 @@ const MilestoneTracker = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMilestones([...milestones, milestone]);
-    setMilestone({ date: "", description: "" });
+    if (milestone.id === null) {
+      setMilestones([...milestones, { ...milestone, id: Date.now() }]);
+    } else {
+      const updatedMilestones = milestones.map((ms) =>
+        ms.id === milestone.id ? { ...milestone } : ms
+      );
+      setMilestones(updatedMilestones);
+    }
+    setMilestone({ id: null, date: "", description: "" });
+  };
+
+  const handleEdit = (id) => {
+    const milestoneToEdit = milestones.find((ms) => ms.id === id);
+    setMilestone({ ...milestoneToEdit });
+  };
+
+  const handleDelete = (id) => {
+    const updatedMilestones = milestones.filter((ms) => ms.id !== id);
+    setMilestones(updatedMilestones);
   };
 
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Child Milestone Tracker</h2>
       <form onSubmit={handleSubmit} className="mb-4">
+        <input type="hidden" name="id" value={milestone.id} />
         <div className="flex items-center mb-2">
           <label htmlFor="date" className="mr-2">
             Date:
@@ -51,15 +73,27 @@ const MilestoneTracker = () => {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
-          Add Milestone
+          {milestone.id ? "Update" : "Add Milestone"}
         </button>
       </form>
       <div>
         <h3 className="text-lg font-bold mb-2">Milestones:</h3>
         <ul>
-          {milestones.map((ms, index) => (
-            <li key={index} className="mb-2">
+          {milestones.map((ms) => (
+            <li key={ms.id} className="mb-2">
               <strong>{ms.date}:</strong> {ms.description}
+              <button
+                className="ml-2 text-blue-500"
+                onClick={() => handleEdit(ms.id)}
+              >
+                Edit
+              </button>
+              <button
+                className="ml-2 text-red-500"
+                onClick={() => handleDelete(ms.id)}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
