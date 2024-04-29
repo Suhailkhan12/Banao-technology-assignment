@@ -14,14 +14,40 @@ const ParentingTips = () => {
     },
     // Add more articles here
   ]);
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <div className="p-4 bg-gray-100 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Parenting Tips and Articles</h2>
       {articles.map((article, index) => (
         <div key={index} className="mb-4 p-4 bg-white rounded-lg shadow-md">
-          <h3 className="text-lg font-bold mb-2">{article.title}</h3>
-          <p>{article.content}</p>
+          <div
+            className="flex justify-between items-center cursor-pointer"
+            onClick={() => toggleAccordion(index)}
+          >
+            <h3 className="text-lg font-bold">{article.title}</h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`h-6 w-6 ${
+                activeIndex === index ? "transform rotate-180" : ""
+              }`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+          {activeIndex === index && <p className="mt-4">{article.content}</p>}
         </div>
       ))}
     </div>
