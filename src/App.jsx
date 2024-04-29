@@ -1,21 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import PageNotFound from "./Pages/PageNotFound";
-import AppLayout from "./ui/AppLayout";
-import CreatePost from "./features/CreatePost/CreatePost";
-import SinglePost from "./features/SinglePost/SinglePost";
+import MilestoneTracker from "./feature.jsx/Milestonetracker";
+import ParentingTips from "./feature.jsx/Parenttips";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/post" element={<CreatePost />} />
-          <Route path="/:postId" element={<SinglePost />} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <div className="container mx-auto">
+        <h1 className="text-3xl font-bold mb-8">Parenting App</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <MilestoneTracker />
+          <ParentingTips />
+        </div>
+      </div>
     </>
   );
 }
