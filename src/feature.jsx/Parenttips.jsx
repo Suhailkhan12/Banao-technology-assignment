@@ -16,10 +16,10 @@ const ParentingTips = () => {
   ]);
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-gray-100 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Parenting Tips and Articles</h2>
       {articles.map((article, index) => (
-        <div key={index} className="mb-4">
+        <div key={index} className="mb-4 p-4 bg-white rounded-lg shadow-md">
           <h3 className="text-lg font-bold mb-2">{article.title}</h3>
           <p>{article.content}</p>
         </div>
